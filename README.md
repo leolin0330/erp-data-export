@@ -3,10 +3,6 @@
 
 ### Python + Selenium ERP 自動化資料匯出工具
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![Selenium](https://img.shields.io/badge/Selenium-Automation-green)
-![Automation](https://img.shields.io/badge/ERP-Process%20Automation-orange)
-
 ------------------------------------------------------------------------
 
 # 專案介紹
