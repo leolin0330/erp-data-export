@@ -35,21 +35,28 @@ WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "
 
 # 等待下載完成函數
 def wait_for_download_complete(download_path, timeout=30):
-    print("⏳ 等待檔案下載...")
+    print("等待檔案下載...")
     start_time = time.time()
     while time.time() - start_time < timeout:
         if not glob.glob(os.path.join(download_path, "*.crdownload")):
             return True
+            
+        # 每秒檢查一次
         time.sleep(1)
+
+    # 超過 timeout
     return False
 
 # 匯出流程函數
 def export_data():
     input_box = driver.find_element(By.ID, "MainContent_TxtPCount")
     input_box.clear()
+
+    # 設定每頁顯示 500 筆
     input_box.send_keys("500")
     driver.find_element(By.ID, "MainContent_BtnToPage").click()
 
+    # 勾選全選 checkbox
     try:
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "Chka170All")))
         checkbox = driver.find_element(By.ID, "Chka170All")
@@ -58,7 +65,9 @@ def export_data():
     except Exception as e:
         print(f"❌ 勾選 checkbox 發生錯誤：{e}")
 
+    # 等待資料載入
     time.sleep(7)
+
     # 下載交貨
     driver.find_element(By.ID, "MainContent_Btn05").click()
     if wait_for_download_complete(download_dir):
