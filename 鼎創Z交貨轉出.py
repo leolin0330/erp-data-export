@@ -13,7 +13,7 @@ os.makedirs(download_dir, exist_ok=True)
 
 # === EdgeDriver 設定 ===
 edge_options = EdgeOptions()
-edge_options.use_chromium = True
+
 prefs = {
     "download.default_directory": download_dir,
     "profile.default_content_settings.popups": 0,
