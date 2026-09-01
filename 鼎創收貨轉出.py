@@ -26,9 +26,9 @@ service = Service(r"D:\edgedriver_win64\msedgedriver.exe")
 driver = webdriver.Edge(service=service, options=edge_options)
 
 # 登入
-driver.get("http://192.168.2.11/cfrme2020/DS00010/DS00010MF.aspx?caller=default")
-driver.find_element(By.ID, "TxtUid").send_keys("07498")
-driver.find_element(By.ID, "TxtPwd").send_keys("07498")
+driver.get("http://xxxx/cfrme2020/DS00010/DS00010MF.aspx?caller=default")
+driver.find_element(By.ID, "TxtUid").send_keys("user")
+driver.find_element(By.ID, "TxtPwd").send_keys("password")
 driver.find_element(By.ID, "BtnLogOn").click()
 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "dropdown-toggle")))
 
